@@ -20,16 +20,15 @@ namespace SentinelTest
             Console.WriteLine(connection.GetStatus());
             Console.WriteLine("---------------------------------------------------------------------------");
 
-            db.StringSet("sentiel", 1);
-
             int i = 0;
             while (true)
             {
                 try
                 {
-                    db.StringSet("sentiel", i++);
+                    db.StringSet("sentinel", i++);
                     Thread.Sleep(500);
-                    Console.WriteLine( "setting value " + i);
+                    Console.WriteLine( "setting value: " + i);
+                    System.Console.WriteLine("getting value :"+db.StringGet("sentinel"));
                 }
                 catch (Exception e)
                 {
