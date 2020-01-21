@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using StackExchange.Redis;
 
@@ -15,16 +16,25 @@ namespace SentinelTest
             var connection = ConnectionMultiplexer.Connect("127.0.0.1:6380,127.0.0.1:6381,127.0.0.1:6382");
             var db = connection.GetDatabase();
 
-            Console.WriteLine("---------------------------Redis Sentinel Test---------------------------");
+            Console.WriteLine("<----------------------Redis Sentinel Test---------------------->");
             Console.WriteLine(connection.GetStatus());
             Console.WriteLine("---------------------------------------------------------------------------");
 
             db.StringSet("sentiel", 1);
 
+            int i = 0;
             while (true)
             {
-                var x = Console.ReadLine();
-                db.StringSet("sentiel", x);
+                try
+                {
+                    db.StringSet("sentiel", i++);
+                    Thread.Sleep(500);
+                    Console.WriteLine( "setting value " + i);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
             }
         }
     }
