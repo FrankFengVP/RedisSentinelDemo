@@ -8,4 +8,4 @@
 
 想了解更多的话请关注公众号 "技术帝国"
 
-![Image text](./0.jfif)
+![Image text](https://github.com/FrankFengVP/RedisSentinelDemo/blob/master/0.jfif)
