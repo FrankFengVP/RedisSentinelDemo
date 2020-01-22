@@ -8,4 +8,4 @@
 
 想了解更多的话请关注公众号 "技术帝国"
 
-![Image text](../pic/0.jfif)
+![Image text](../0.jfif)
